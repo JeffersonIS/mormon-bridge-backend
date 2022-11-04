@@ -9,8 +9,8 @@ const { makeid, addMessage, shuffle,
     getPlayerIndex, resetPlayerBets, getCardName,
     resetGameState, getGameWinner} = require('./utils');
 const { initGame, addPlayerToGameState } = require('./game');
-const e = require('express');
 
+const port = process.env.PORT || 3001;
 const state = {};
 const clientRooms = {};
 
@@ -323,6 +323,6 @@ function setRoundAndTurnOverInterval(roomName, gameState, flag){
     }, 1000);
 }
 
-server.listen(3001, () => {
+server.listen(port, () => {
     console.log("SERVER RUNNING")
 })
