@@ -179,15 +179,8 @@ function getCurrentWinningCard(gameState, card, playerId){
 //   let highestTrumpPlayed = -1;
 //   let highestLeadPlayed = -1;
 
-//   // console.log(`trump is a ${trumpCard} of ${trumpSuit}`);
-//   // console.log(`lead is a ${leadCard} of ${leadSuit}`)
-
 //   gameState.players.forEach((player) => {
 //     let cardSuit = getSuit(player.cardPlayedThisTurn);
-
-//     // console.log(
-//     //   `${player.name} played a ${cardSuit} of ${player.cardPlayedThisTurn}`
-//     // );
 
 //     //check if card is highest lead if trump has not been played
 //     if (highestTrumpPlayed === -1) {
@@ -216,15 +209,7 @@ function getCurrentWinningCard(gameState, card, playerId){
 //   // gameState.winnerLastTurnIndex = getPlayerIndex(gameState, winnerId);
 //   // gameState.winnerCardLastTurn = winnerCard;
 //   let player = getPlayer(gameState, winnerId);
-
-//   addMessage(
-//     gameState,
-//     `${player.name} won with ${getCardName(player.cardPlayedThisTurn)}`
-//   );
-//   console.log('winners',gameState.currentWinningPlayer, player)
-
 //   player.tricksWon += 1;
-//   return winnerId;
 // }
 
 function scorePoints(gameState) {

@@ -239,8 +239,7 @@ function handlePlayCard(card, roomName, playerId) {
     //GET TRICK WINNER
     let winnerId = gameState.currentWinningPlayer.socketId
     let winnerIndex = getPlayerIndex(gameState, winnerId);
-    // removeCardsPlayedThisTurn(gameState);
-    // gameState.leadCard = gameState.deckStyleNum;
+    gameState.players[gameState.players[winnerIndex]].tricksWon += 1;
 
     //set lead to person who won the trick
     gameState.leadPlayerId = winnerId;
@@ -253,7 +252,6 @@ function handlePlayCard(card, roomName, playerId) {
 
     //do this after all players have selected to advance to next turn
     emitGameState(roomName, gameState);
-    // setRoundAndTurnOverInterval(roomName, gameState, "turn");
     
   } else {
     //if the turn is not over advance currentPlayer
