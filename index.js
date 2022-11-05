@@ -31,8 +31,8 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: "https://mormonbridge.netlify.app",
-    // origin: "http://localhost:3000",
+    // origin: "https://mormonbridge.netlify.app",
+    origin: "http://localhost:3000",
     methods: ["GET", "POST"],
   },
 });
@@ -331,18 +331,22 @@ function handlePlaceBet(bet, roomName, playerId) {
 
   //check if all players have bet
   let advanceRound = true;
-  let totalBets = 0;
   gameState.players.forEach((player) => {
     if (!player.hasBet) {
       advanceRound = false;
       return;
     } 
-    totalBets += Number(bet);
   });
 
   if (advanceRound) {
+    
     gameState.roundStatus += 1;
-    gameState.totalBets = totalBets;
+    let totalBets = 0;
+    gameState.players.forEach(player => {
+      totalBets += player.tricksBet;
+    })
+    gameState.totalBets += totalBets;
+
     addMessage(gameState, `${gameState.players[gameState.leadPlayerIndex].name}'s turn`);
   }
 
