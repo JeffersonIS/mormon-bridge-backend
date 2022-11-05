@@ -31,8 +31,8 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: "https://mormonbridge.netlify.app",
-    // origin: "http://localhost:3000",
+    // origin: "https://mormonbridge.netlify.app",
+    origin: "http://localhost:3000",
     methods: ["GET", "POST"],
   },
 });
@@ -239,7 +239,8 @@ function handlePlayCard(card, roomName, playerId) {
     //GET TRICK WINNER
     let winnerId = gameState.currentWinningPlayer.socketId
     let winnerIndex = getPlayerIndex(gameState, winnerId);
-    gameState.players[gameState.players[winnerIndex]].tricksWon += 1;
+    let player = gameState.players[winnerIndex];
+    player.tricksWon += 1;
 
     //set lead to person who won the trick
     gameState.leadPlayerId = winnerId;
